@@ -1,6 +1,3 @@
-
-Certainly! A README file is essential for documenting your project and providing clear instructions for others (and yourself) on how to use, install, and understand your project. Here’s a sample README for your project:
-
 Students QR Code Generator
 Description
 This project is a web application that allows users to enter their information, which is then used to generate a QR code. The QR code contains the user's full name, student ID, course, and year level. The application is built using HTML, CSS, and PHP.
