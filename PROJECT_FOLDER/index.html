@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENTS QR CODE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="content">PLEASE ENTER YOUR INFORMATION</div>
+
+    <div class="panel-body">
+        <form id="signupForm" action="connect.php" method="post">
+            <div class="container">
+                <label for="fullName">Full Name: </label>
+                <input type="text" name="fullName" id="fullName" placeholder="Enter Full Name" required><br><br>
+
+                <label for="studentID">Student ID: </label>
+                <input type="number" name="studentID" id="studentID" placeholder="Enter Student ID" required><br><br>
+
+                <label for="course">Course: </label>
+                <input type="text" name="course" id="course" placeholder="Enter Course" required><br><br>
+
+                <label for="yearLevel">Year Level: </label>
+                <input type="text" name="yearLevel" id="yearLevel" placeholder="Enter Year Level" required><br><br>
+
+                <div id="imgBox">
+                    <img src="" id="qrImg" alt="QR Code">
+                </div>
+                <button type="button" onclick="generateQR()">GENERATE STUDENTS QR CODE</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function generateQR() {
+            let qrImg = document.getElementById("qrImg");
+            let fullName = document.getElementById("fullName").value;
+            let studentID = document.getElementById("studentID").value;
+            let course = document.getElementById("course").value;
+            let yearLevel = document.getElementById("yearLevel").value;
+
+            let qrText = `${fullName} ${studentID} ${course} ${yearLevel}`;
+            if (qrText.length > 0) {
+                qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(qrText);
+                document.getElementById("imgBox").classList.add("show-img");
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>
